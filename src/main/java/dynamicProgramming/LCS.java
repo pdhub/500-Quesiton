@@ -43,7 +43,7 @@ public class LCS {
     /*Here we have assumed the table row to contain X-> firstString elements, Y->Second String elements*/
     public int usingBottomUpApproachAndTable(String firstString, String secondString)
     {
-        int lookUpTable[][] = new int[firstString.length()][secondString.length()];
+        int lookUpTable[][] = new int[firstString.length()+1][secondString.length()+1];
 
         for (int i = 0; i < firstString.length(); i++) {
             lookUpTable[i][0] = 0;
@@ -54,8 +54,8 @@ public class LCS {
         }
 
         //populate table in bottom up manner
-        for (int i = 1; i < firstString.length(); i++) {
-            for (int j = 1; j < secondString.length(); j++) {
+        for (int i = 1; i <= firstString.length(); i++) {
+            for (int j = 1; j <= secondString.length(); j++) {
                 if(firstString.charAt(i-1) == secondString.charAt(j-1)){
                     lookUpTable[i][j] = lookUpTable[i-1][j-1]+1;
                 }else {
@@ -63,7 +63,7 @@ public class LCS {
                 }
             }
         }
-        return lookUpTable[firstString.length()-1][secondString.length()-1];
+        return lookUpTable[firstString.length()][secondString.length()];
     }
 
     public static void main(String[] args) {
