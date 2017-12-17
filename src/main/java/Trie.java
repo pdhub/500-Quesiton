@@ -46,6 +46,47 @@ public class Trie {
         return curr.isLeaf;
     }
 
+    public boolean delete(TrieNode curr, String str, int i){
+        if(Objects.isNull(curr))
+            return false;
+        while(i < str.length())
+        {
+            if(Objects.nonNull(curr) && (curr.characters[str.charAt(i) - 'a']!=null)
+                && delete(curr.characters[str.charAt(i)-'a'], str, i+1)
+                && curr.isLeaf == 0)
+            {
+                if(!haveChildren(curr))
+                {
+                    curr = null;
+                    return true;        
+                }
+                else 
+                    return false;
+            }
+        }
+
+        if(i == str.length()-1 && curr.isLeaf == 1){
+            if(!haveChildren(curr)){
+                curr = null;
+                return true;
+            }
+            else
+            {
+                curr.isLeaf = 0;
+                return false;
+            }
+        }
+        return false;
+    }
+
+    private boolean haveChildren(TrieNode curr) {
+        for (int i = 0; i < curr.characters.length; i++) {
+            if(curr.characters[i]!=null)
+                return true;
+        }
+        return false;
+    }
+
     public void allOperations(){
         TrieNode head = getNewTrieNode();
         insert(head, "hello");
