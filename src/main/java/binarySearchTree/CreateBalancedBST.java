@@ -16,7 +16,7 @@ public class CreateBalancedBST
         root = new Node();
         root.key = keys[mid];
 
-        convert(keys, low, mid - 1, root);
-        convert(keys, mid + 1, high, root);
+        convert(keys, low, mid - 1, root.left);
+        convert(keys, mid + 1, high, root.right);
     }
 }
