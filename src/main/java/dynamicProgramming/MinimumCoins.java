@@ -20,7 +20,7 @@ public class MinimumCoins
                 if (i - coins[c] > 0)
                     res = T[i - coins[c]];
                 if (res != Integer.MAX_VALUE)
-                    res = Math.min(T[i], res + 1);
+                    T[i] = Math.min(T[i], res + 1);
             }
         }
         return T[sum];
