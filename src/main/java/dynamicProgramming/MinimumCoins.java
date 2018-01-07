@@ -17,7 +17,7 @@ public class MinimumCoins
 
             for (int c = 0; c < coins.length; c++)
             {
-                if (i - coins[c] > 0)
+                if (i - coins[c] >= 0)
                     res = T[i - coins[c]];
                 if (res != Integer.MAX_VALUE)
                     T[i] = Math.min(T[i], res + 1);
