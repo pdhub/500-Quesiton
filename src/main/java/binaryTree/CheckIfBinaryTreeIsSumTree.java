@@ -17,4 +17,18 @@ public class CheckIfBinaryTreeIsSumTree {
 
         return Integer.MIN_VALUE;
     }
+
+    public int checkIfSumTree (Node root)
+    {
+        if (root == null)
+            return 0;
+
+        if(root.left == null && root.right == null)
+            return root.key;
+
+        if (root.key == checkIfSumTree(root.left) + checkIfSumTree(root.right))
+            return 2 * root.key;
+
+        return Integer.MIN_VALUE;
+    }
 }

@@ -71,4 +71,67 @@ public class DeleteNodeInBST
             node = node.left;
         return node;
     }
+
+    //Repeat 1
+
+    public void deleteNodeInBST(Node root, int key)
+    {
+        if (root == null)
+            return;
+
+        Node current = root;
+        Node parent = null;
+
+        searchNodeToDelete(root, current, key, parent);
+        if (current == null)
+            return; // Node to delete is not found
+
+        if (current.left == null && current.right == null)
+        {
+            if (current != root)
+            {
+                if (parent.left == current)
+                    parent.left = null;
+                else
+                    parent.right = null;
+            }
+            else
+                root = null; // If tree has only one root, delete it
+        }
+
+        else if (current.left != null && current.right !=null)
+        {
+            Node successor = findMinimum(current.right);
+            int tempVal = successor.key;
+            delete(root, successor.key);
+            current.key = tempVal;
+        }
+        else // Node to delete has only one child
+        {
+            current.key = current.left!=null?current.left.key:current.right.key;
+            if (current.left != null)
+                current.left = null;
+            else
+                current.right = null;
+        }
+    }
+
+    private Node findMinimum(Node node)
+    {
+        while (node.left != null)
+            node = node.left;
+        return node;
+    }
+
+    private void searchNodeToDelete(Node root, Node current, int key, Node parent)
+    {
+        while (current != null && current.key != key)
+        {
+            parent = current;
+            if (key < current.key)
+                current = current.left;
+            else
+                current = current.right;
+        }
+    }
 }

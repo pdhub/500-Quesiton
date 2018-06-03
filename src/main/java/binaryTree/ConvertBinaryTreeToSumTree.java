@@ -21,4 +21,17 @@ public class ConvertBinaryTreeToSumTree {
         int data;
         Node left, right;
     }
+
+    public int convert(Node root)
+    {
+        if (root == null)
+            return 0;
+
+        int left = convertToSum(root.left);
+        int right = convertToSum(root.right);
+
+        int temp = root.data;
+        root.data = left + right;
+        return root.data + temp;
+    }
 }

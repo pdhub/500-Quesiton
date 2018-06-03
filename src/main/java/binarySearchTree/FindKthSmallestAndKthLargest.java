@@ -50,4 +50,20 @@ public class FindKthSmallestAndKthLargest
 
         return kthSmallest(root.left, i, k);
     }
+
+    //repeat
+    public int kthSmallest1(Node root, Integer i, Integer k)
+    {
+        if (root == null)
+            return Integer.MAX_VALUE;
+
+        int left = kthSmallest1(root.left, i, k);
+
+        if (left != Integer.MAX_VALUE)
+            return left;
+        if (++i == k)
+            return root.key;
+
+        return kthSmallest(root.right, i, k);
+    }
 }

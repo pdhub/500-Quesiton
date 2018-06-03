@@ -22,4 +22,17 @@ public class DiameterOfATree {
         int maxHeight = Math.max(leftHeight, rightHeight);
         return maxHeight+1;
     }
+
+    private int diameter(Node root)
+    {
+        if (root == null)
+            return 0;
+
+        int leftHeight = diameter(root.left);
+        int rightHeight = diameter(root.right);
+
+        diameter = Math.max(diameter, leftHeight + rightHeight + 1);
+        int maxHeight = Math.max(leftHeight, rightHeight);
+        return maxHeight + 1;
+    }
 }

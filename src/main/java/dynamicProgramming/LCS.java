@@ -78,4 +78,36 @@ public class LCS {
         System.out.println("Using bottom up : "+lcs.usingBottomUpApproachAndTable(firstString, secondString));
 
     }
+
+    //revise
+
+    private int LCSLength(String x, String y)
+    {
+        int m = x.length();
+        int n = y.length();
+
+        int lookUp[][] = new int[m + 1][n + 1];
+
+        for (int i = 0; i <= m ; i++)
+        {
+            lookUp[i][0] = 0;
+        }
+
+        for (int i = 0; i <= n ; i++)
+        {
+            lookUp[0][n] = 0;
+        }
+
+        for (int i = 1; i <= m; i++)
+        {
+            for (int j = 1; j <= n; j++)
+            {
+                if (x.charAt(i - 1) == y.charAt(j - 1))
+                    lookUp[i][j] = lookUp[i-1][j-1] + 1;
+                else
+                    lookUp[i][j] = Math.max(lookUp[i - 1][j], lookUp[i][j - 1]);
+            }
+        }
+        return lookUp[m][n];
+    }
 }

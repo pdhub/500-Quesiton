@@ -54,7 +54,7 @@ public class KruskalMST {
 
        void kruskalMST(){
            Edge result[] = new Edge[V];
-           int e = 0;
+
            /*for (int i = 0; i < V ; i++) {
                result[i] = new Edge();
            }*/
@@ -68,6 +68,7 @@ public class KruskalMST {
            }
 
            int i = 0;
+           int e = 0;
            while(e < V-1){
                Edge nextEdge = edge[i++];
                int x = find(subset, nextEdge.src);

@@ -14,4 +14,18 @@ public class ConvertBinaryTreeToMirror {
         root.left = root.right;
         root.right = temp;
     }
+
+    public void mirror(Node root)
+    {
+        if(root == null)
+            return;
+
+        convert(root.left);
+        convert(root.right);
+
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+
+    }
 }
