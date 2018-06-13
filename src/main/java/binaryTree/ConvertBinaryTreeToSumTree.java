@@ -5,33 +5,16 @@ package binaryTree;
  */
 public class ConvertBinaryTreeToSumTree {
 
-    public int convertToSum(Node root)
-    {
-        if(root == null)
-            return 0;
-        int left = convertToSum(root.left);
-        int right = convertToSum(root.right);
-
-        int temp = root.data;
-        root.data = left+right;
-        return left+right+temp;
-    }
-
     class Node{
         int data;
         Node left, right;
     }
 
-    public int convert(Node root)
-    {
+    public int convert(Node root){
         if (root == null)
             return 0;
-
-        int left = convertToSum(root.left);
-        int right = convertToSum(root.right);
-
         int temp = root.data;
-        root.data = left + right;
-        return root.data + temp;
+        root.data = convert(root.left) + convert(root.right);
+        return temp + root.data;
     }
 }

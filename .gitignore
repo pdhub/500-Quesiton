@@ -48,3 +48,5 @@ Temporary Items
 
 #class files
 *.class
+*.xml
+.idea\*.xml
