@@ -20,21 +20,22 @@ public class TimeToRotOranges {
             while (!delim(queue.peek())){
                 Ele temp = queue.peek();
                 //Repeat on all 4 directions
-                if(isValidCell(temp.x+1, temp.y)
-                        && arr[temp.x+1][temp.y] == 1){
-
-                    if (!flag){
-                        time++;
-                        flag = true;
-                    }
-
-                    arr[temp.x+1][temp.y] = 2;
-                    ((LinkedList<Ele>) queue).add(new Ele(temp.x+1, temp.y, arr[temp.x+1][temp.y]));
-                }
+//                if(isValidCell(temp.x+1, temp.y)
+//                        && arr[temp.x+1][temp.y] == 1){
+//
+//                    if (!flag){
+//                        time++;
+//                        flag = true;
+//                    }
+//
+//                    arr[temp.x+1][temp.y] = 2;
+//                    ((LinkedList<Ele>) queue).add(new Ele(temp.x+1, temp.y, arr[temp.x+1][temp.y]));
+//                }
                 queue.remove();//
             }
             queue.remove();//Removing delimiter
         }
+        return 0;
     }
 
     private static boolean delim(Ele peek) {
